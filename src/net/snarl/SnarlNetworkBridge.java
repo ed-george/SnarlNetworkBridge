@@ -244,7 +244,7 @@ public class SnarlNetworkBridge {
 	 * @return true if Snarl is running and listening to network Connections
 	 *         otherwise false
 	 */
-	public static boolean snIsRunnging() {
+	public static boolean snIsRunning() {
 		return snarlIsRunning;
 	}
 

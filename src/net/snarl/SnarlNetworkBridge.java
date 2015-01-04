@@ -101,10 +101,10 @@ public class SnarlNetworkBridge {
 			snarlIsRunning = true;
 		} catch (ConnectException e) {
 			snarlIsRunning = false;
-			System.out.println("Snarl is not running");
+			System.err.println("Snarl is not running");
 		} catch (UnknownHostException e) {
 			snarlIsRunning = false;
-			System.out.println("Host not reachable");
+			System.err.println("Host not reachable");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

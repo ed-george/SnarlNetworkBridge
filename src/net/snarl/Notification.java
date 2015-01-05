@@ -93,22 +93,22 @@ public class Notification extends Message {
 	 */
 	void setUserAction(Action action) {
 		this.userAction = action;
-		if (action == Action.Closed || action == Action.LeftClicked
-				|| action == Action.Timed_Out)
+		if (action == Action.CLOSED || action == Action.LEFT_CLICKED
+				|| action == Action.TIMED_OUT)
 			SnarlNetworkBridge.removeNotification(this);
 		if (actionListener == null)
 			return;
 		switch (action) {
-		case LeftClicked:
+		case LEFT_CLICKED:
 			actionListener.notificationLeftClicked();
 			break;
-		case RhigthClicked:
+		case RIGHT_CLICKED:
 			actionListener.notificationRightClicked();
 			break;
-		case Closed:
+		case CLOSED:
 			actionListener.notificationClosed();
 			break;
-		case Timed_Out:
+		case TIMED_OUT:
 			actionListener.notificationTimedOut();
 		default:
 			break;

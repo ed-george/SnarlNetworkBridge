@@ -28,7 +28,7 @@ package net.snarl;
  */
 public enum Action {
 
-	RhigthClicked(302), Timed_Out(303), LeftClicked(304), Closed(307);
+	RIGHT_CLICKED(302), TIMED_OUT(303), LEFT_CLICKED(304), CLOSED(307);
 
 	private int code;
 
@@ -47,7 +47,7 @@ public enum Action {
 		for (Action a : Action.values())
 			if (a.code == code)
 				return a;
-		return Timed_Out;
+		return TIMED_OUT;
 	}
 
 	/**

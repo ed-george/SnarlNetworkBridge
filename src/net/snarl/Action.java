@@ -19,11 +19,14 @@
 
 package net.snarl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Enumeration of all user actions which can be applied to a Snarl Notification
  * 
  * @author Patrick von Reth
- * 
+ * @author Ed George
  * 
  */
 public enum Action {
@@ -31,6 +34,19 @@ public enum Action {
 	RIGHT_CLICKED(302), TIMED_OUT(303), LEFT_CLICKED(304), CLOSED(307);
 
 	private int code;
+	
+	/*
+	 * Create static map of Action enums to avoid iteration in getByCode()
+	 * Should run in O(1)
+	 */
+    private static final Map<Integer, Action> CODE_MAP = new HashMap<Integer, Action>();
+    static {
+        for (Action action : Action.values()) {
+            if (CODE_MAP.put(action.getCode(), action) != null) {
+                throw new IllegalArgumentException("Duplicate code " + action.getCode() + " for Action enum");
+            }
+        }
+    }
 
 	private Action(int code) {
 		this.code = code;
@@ -44,10 +60,7 @@ public enum Action {
 	 * @return the eum constant with the specific code
 	 */
 	public static Action getByCode(int code) {
-		for (Action a : Action.values())
-			if (a.code == code)
-				return a;
-		return TIMED_OUT;
+		return CODE_MAP.get(code);
 	}
 
 	/**
